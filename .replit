@@ -1,0 +1,20 @@
+modules = ["web", "angular-node-20", "python-base-3.13", "qbasic", "nodejs-23"]
+
+[nix]
+channel = "stable-24_05"
+
+[workflows]
+runButton = "Run Flask App"
+
+[[workflows.workflow]]
+name = "Run Flask App"
+author = 44905847
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python main.py"
+
+[[ports]]
+localPort = 5000
+externalPort = 80
