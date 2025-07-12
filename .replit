@@ -1,0 +1,4 @@
+modules = ["web", "angular-node-20", "python-base-3.13", "qbasic", "nodejs-23"]
+
+[nix]
+channel = "stable-24_05"
