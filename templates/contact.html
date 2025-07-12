@@ -1,0 +1,109 @@
+
+{% extends "base.html" %}
+
+{% block title %}Xiriir - Website Soomaaliya{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <div class="bg-white/20 backdrop-blur-md rounded-2xl p-8 shadow-2xl">
+        <h1 class="text-4xl font-bold text-white text-center mb-8">📞 Nala Soo Xiriir</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Contact Info -->
+            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                <h3 class="text-2xl font-semibold text-white mb-6">📍 Macluumaadka Xiriirka</h3>
+                
+                <div class="space-y-4">
+                    <div class="flex items-center">
+                        <div class="text-2xl mr-4">📧</div>
+                        <div>
+                            <p class="text-white font-semibold">Email:</p>
+                            <a href="mailto:info@websitesoomaaliya.com" 
+                               class="text-yellow-300 hover:text-yellow-400">
+                               info@websitesoomaaliya.com
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <div class="text-2xl mr-4">📱</div>
+                        <div>
+                            <p class="text-white font-semibold">Taleefan:</p>
+                            <p class="text-white/80">+252 61 xxx xxxx</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <div class="text-2xl mr-4">📍</div>
+                        <div>
+                            <p class="text-white font-semibold">Cinwaan:</p>
+                            <p class="text-white/80">Muqdisho, Soomaaliya</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <div class="text-2xl mr-4">🕒</div>
+                        <div>
+                            <p class="text-white font-semibold">Waqtiga Shaqada:</p>
+                            <p class="text-white/80">24/7 Online</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                <h3 class="text-2xl font-semibold text-white mb-6">✉️ Noo Dir Fariimo</h3>
+                
+                <form class="space-y-4">
+                    <div>
+                        <label class="block text-white font-semibold mb-2">Magaca:</label>
+                        <input type="text" 
+                               class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                               placeholder="Gali magacaaga">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-white font-semibold mb-2">Email:</label>
+                        <input type="email" 
+                               class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                               placeholder="Gali email-kaaga">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-white font-semibold mb-2">Fariimada:</label>
+                        <textarea rows="4" 
+                                  class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                  placeholder="Qor fariimadaada halkan..."></textarea>
+                    </div>
+                    
+                    <button type="submit" 
+                            class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105">
+                        📤 Dir Fariimada
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Social Media -->
+        <div class="mt-8 bg-white/10 backdrop-blur-sm rounded-xl p-6">
+            <h3 class="text-2xl font-semibold text-white mb-6 text-center">🌐 Nala Raac</h3>
+            
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full transition-all duration-300 hover:scale-110">
+                    📘 Facebook
+                </a>
+                <a href="#" class="bg-blue-400 hover:bg-blue-500 text-white p-3 rounded-full transition-all duration-300 hover:scale-110">
+                    🐦 Twitter
+                </a>
+                <a href="#" class="bg-purple-600 hover:bg-purple-700 text-white p-3 rounded-full transition-all duration-300 hover:scale-110">
+                    📷 Instagram
+                </a>
+                <a href="#" class="bg-red-600 hover:bg-red-700 text-white p-3 rounded-full transition-all duration-300 hover:scale-110">
+                    📺 YouTube
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

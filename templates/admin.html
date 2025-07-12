@@ -1,0 +1,95 @@
+
+{% extends "base.html" %}
+
+{% block title %}Admin Panel - Website Soomaaliya{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto">
+    <div class="bg-white/20 backdrop-blur-md rounded-2xl p-8 shadow-2xl">
+        <h2 class="text-3xl font-bold text-white mb-8">👑 Admin Panel</h2>
+        
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
+                <div class="text-4xl mb-2">👥</div>
+                <h3 class="text-2xl font-bold text-white">{{ users|length }}</h3>
+                <p class="text-white/80">Wadarta Users-ka</p>
+            </div>
+            
+            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
+                <div class="text-4xl mb-2">👑</div>
+                <h3 class="text-2xl font-bold text-white">
+                    {{ users.values() | selectattr('role', 'equalto', 'admin') | list | length }}
+                </h3>
+                <p class="text-white/80">Admins</p>
+            </div>
+            
+            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
+                <div class="text-4xl mb-2">🌟</div>
+                <h3 class="text-2xl font-bold text-white">
+                    {{ users.values() | selectattr('role', 'equalto', 'user') | list | length }}
+                </h3>
+                <p class="text-white/80">Regular Users</p>
+            </div>
+        </div>
+        
+        <!-- Users Table -->
+        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+            <h3 class="text-2xl font-semibold text-white mb-6">Dhammaan Users-ka</h3>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-white">
+                    <thead>
+                        <tr class="border-b border-white/30">
+                            <th class="text-left py-3 px-4">Username</th>
+                            <th class="text-left py-3 px-4">Email</th>
+                            <th class="text-left py-3 px-4">Role</th>
+                            <th class="text-left py-3 px-4">Waqtiga Diiwaangelinta</th>
+                            <th class="text-left py-3 px-4">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for username, user in users.items() %}
+                        <tr class="border-b border-white/20 hover:bg-white/5">
+                            <td class="py-3 px-4">
+                                <span class="font-semibold">{{ username }}</span>
+                                {% if username == session.username %}
+                                    <span class="text-yellow-300 text-sm">(Adiga)</span>
+                                {% endif %}
+                            </td>
+                            <td class="py-3 px-4">{{ user.email }}</td>
+                            <td class="py-3 px-4">
+                                <span class="px-2 py-1 rounded-full text-xs {% if user.role == 'admin' %}bg-purple-500{% else %}bg-blue-500{% endif %}">
+                                    {{ user.role.title() }}
+                                </span>
+                            </td>
+                            <td class="py-3 px-4">
+                                {{ user.created_at[:10] if user.created_at else 'N/A' }}
+                            </td>
+                            <td class="py-3 px-4">
+                                {% if username != session.username %}
+                                    <a href="{{ url_for('delete_user', username=username) }}" 
+                                       onclick="return confirm('Ma hubtaa inaad tirtirto user-kan?')"
+                                       class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm">
+                                        🗑️ Tirtir
+                                    </a>
+                                {% else %}
+                                    <span class="text-white/50 text-sm">Ma tirtiri kartid naftaada</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="mt-8 text-center">
+            <a href="{{ url_for('dashboard') }}" 
+               class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105">
+                📊 Ku Laabo Dashboard-ka
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
